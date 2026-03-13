@@ -18,7 +18,7 @@ praw==7.8.1
 # HTTP / Networking
 httpx==0.28.1
 requests==2.32.3
-aiohttp==3.11.10
+aiohttp==3.13.3
 tenacity==9.0.0
 
 # Email
@@ -28,7 +28,7 @@ sendgrid==6.11.0
 python-dotenv==1.0.1
 
 # Utilities
-Pillow==11.0.0
+Pillow==12.1.1
 python-dateutil==2.9.0.post0
 pytz==2024.2
 jinja2==3.1.4
