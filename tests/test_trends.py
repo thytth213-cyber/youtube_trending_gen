@@ -135,17 +135,13 @@ def test_fetch_trends_returns_at_most_10(tmp_path, monkeypatch):
     async def mock_all():
         return many
 
-    monkeypatch.setattr(trends_mod, "_fetch_youtube_trending", mock_all)
-    monkeypatch.setattr(trends_mod, "_fetch_reddit_trending", lambda: asyncio.coroutine(lambda: [])())
-    monkeypatch.setattr(trends_mod, "_fetch_google_trends", lambda: asyncio.coroutine(lambda: [])())
-
-    # Use force=True so cache is bypassed
     async def mock_reddit():
         return []
 
     async def mock_gt():
         return []
 
+    monkeypatch.setattr(trends_mod, "_fetch_youtube_trending", mock_all)
     monkeypatch.setattr(trends_mod, "_fetch_reddit_trending", mock_reddit)
     monkeypatch.setattr(trends_mod, "_fetch_google_trends", mock_gt)
 

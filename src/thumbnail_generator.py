@@ -131,9 +131,8 @@ async def _generate_canva_thumbnail(
         )
         export_resp.raise_for_status()
         export_data = export_resp.json()
-        download_url = (
-            export_data.get("job", {}).get("urls", [None])[0]
-        )
+        urls = export_data.get("job", {}).get("urls", [])
+        download_url = urls[0] if urls else None
 
         if not download_url:
             raise ValueError("Canva: no download URL in export response")

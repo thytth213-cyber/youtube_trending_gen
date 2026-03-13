@@ -124,8 +124,11 @@ async def _schedule_post(
         resp.raise_for_status()
         data = resp.json()
 
-    buffer_id = data.get("updates", [{}])[0].get("id", "")
-    post_url = data.get("updates", [{}])[0].get("profile_service_type", "")
+    updates = data.get("updates", [])
+    if not updates:
+        raise ValueError(f"Buffer API returned no updates for platform={platform}")
+    buffer_id = updates[0].get("id", "")
+    post_url = updates[0].get("profile_service_type", "")
 
     # Persist to database
     with get_session() as session:

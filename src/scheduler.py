@@ -228,12 +228,12 @@ def start_scheduler() -> BackgroundScheduler:
         total = base_h * 60 + base_m + minutes
         return (total // 60) % 24, total % 60
 
-    scheduler.add_job(job_fetch_trends,       _at(*_offset(0)),   id="fetch_trends",       replace_existing=True)
-    scheduler.add_job(job_generate_scripts,   _at(*_offset(15)),  id="gen_scripts",        replace_existing=True)
-    scheduler.add_job(job_generate_videos,    _at(*_offset(30)),  id="gen_videos",         replace_existing=True)
-    scheduler.add_job(job_generate_thumbnails,_at(*_offset(120)), id="gen_thumbnails",     replace_existing=True)
-    scheduler.add_job(job_schedule_buffer,    _at(*_offset(180)), id="schedule_buffer",    replace_existing=True)
-    scheduler.add_job(job_daily_report,       _at(*_offset(210)), id="daily_report",       replace_existing=True)
+    scheduler.add_job(job_fetch_trends, _at(*_offset(0)), id="fetch_trends", replace_existing=True)
+    scheduler.add_job(job_generate_scripts, _at(*_offset(15)), id="gen_scripts", replace_existing=True)
+    scheduler.add_job(job_generate_videos, _at(*_offset(30)), id="gen_videos", replace_existing=True)
+    scheduler.add_job(job_generate_thumbnails, _at(*_offset(120)), id="gen_thumbnails", replace_existing=True)
+    scheduler.add_job(job_schedule_buffer, _at(*_offset(180)), id="schedule_buffer", replace_existing=True)
+    scheduler.add_job(job_daily_report, _at(*_offset(210)), id="daily_report", replace_existing=True)
 
     scheduler.start()
     _scheduler = scheduler

@@ -104,6 +104,9 @@ for _d in (DATA_DIR, LOGS_DIR, VIDEOS_DIR, THUMBNAILS_DIR):
 # Cost tracking
 # ---------------------------------------------------------------------------
 
+# Veo 3 "Fast" mode pricing: $0.15 per generated video second (not wall-clock
+# time). This is the price published by Google AI Studio for Veo 3 Fast as of
+# early 2025. Override via VEO3_COST_PER_SECOND in .env if pricing changes.
 VEO3_COST_PER_SECOND: float = float(_optional("VEO3_COST_PER_SECOND", "0.15"))
 
 # ---------------------------------------------------------------------------

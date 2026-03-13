@@ -115,10 +115,13 @@ async def _generate_single_video(
         veo3_id = getattr(response, "operation_name", f"local_{video_id}")
         update_video_status(video_id, "processing", veo3_id=veo3_id)
 
-        # Poll for completion
+        # Poll for completion.
+        # `done` may be a callable method or a property depending on the SDK version.
         start = time.time()
         while time.time() - start < VIDEO_POLL_MAX_WAIT:
-            if hasattr(response, "done") and not response.done():
+            done_attr = getattr(response, "done", None)
+            is_done = done_attr() if callable(done_attr) else bool(done_attr)
+            if not is_done:
                 await asyncio.sleep(VIDEO_POLL_INTERVAL)
                 response = await asyncio.get_event_loop().run_in_executor(
                     None, response.refresh
