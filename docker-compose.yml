@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  content-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: content-ai
+    restart: unless-stopped
+
+    # Mount volumes for persistence
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./.env:/app/.env:ro
+
+    environment:
+      - TZ=UTC
+      - PYTHONUNBUFFERED=1
+
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.25"
+          memory: 256M
+
+    networks:
+      - content-ai-network
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  content-ai-network:
+    driver: bridge

@@ -1,0 +1,34 @@
+# Core framework
+APScheduler==3.10.4
+SQLAlchemy==2.0.36
+
+# OpenAI
+openai==1.57.2
+
+# Google APIs
+google-api-python-client==2.154.0
+google-auth==2.37.0
+google-auth-httplib2==0.2.0
+google-generativeai==0.8.3
+
+# YouTube / Trend research
+pytrends==4.9.2
+praw==7.8.1
+
+# HTTP / Networking
+httpx==0.28.1
+requests==2.32.3
+aiohttp==3.11.10
+tenacity==9.0.0
+
+# Email
+sendgrid==6.11.0
+
+# Environment
+python-dotenv==1.0.1
+
+# Utilities
+Pillow==11.0.0
+python-dateutil==2.9.0.post0
+pytz==2024.2
+jinja2==3.1.4

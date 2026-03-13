@@ -1,0 +1,49 @@
+# Environment variables (never commit real credentials)
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.xml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated data (large files, not for version control)
+data/videos/
+data/thumbnails/
+data/content_ai.db
+data/content_ai_backup.db
+data/trends.json
+data/scripts.json
+logs/
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
